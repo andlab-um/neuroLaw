@@ -17,26 +17,26 @@ Code for [[开源项目] Neurolaw project](https://andlab-um.com/openprojects) p
 </p>
 
 ## structure（结构）
-- 📂 文献
-    - 📂 论文
+- 📂 Literature（文献）
+    - 📂 Papers论文
         - 📄 Paper1.pdf
         - 📄 Paper2.pdf
         - ...
-    - 📂 书籍
+    - 📂 Books书籍
         - 📄 Book1.pdf
         - 📄 Book2.pdf
         - ...
-- 📂 数据集
-    - 📂 EEG 数据集
+- 📂 Studies
+    - 📂 Study 1
         - 📄 Subject1.csv
         - 📄 Subject2.csv
         - ...
-    - 📂 MRI 数据集
+    - 📂 Study 2(fMRI)
         - 📄 Subject1.nii
         - 📄 Subject2.nii
         - ...
-- 📂 工具
-    - 📂 分析工具
+- 📂 Tools
+    - 📂 Data analysis and visualization分析工具
         - 📄 Tool1.py
         - 📄 Tool2.ipynb
         - ...
