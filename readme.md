@@ -13,8 +13,8 @@ Code for [[开源项目] Neurolaw project](https://andlab-um.com/openprojects) p
 ## Description
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/19154386/206663251-5fb70be3-a126-4e94-ac0d-0b6962dcd6e4.png" align="middle" height="300px">
-	<br><i>Experimental paradigm</i>
+	<img src="[https://user-images.githubusercontent.com/19154386/206663251-5fb70be3-a126-4e94-ac0d-0b6962dcd6e4.png](https://github.com/andlab-um/neuroLaw/blob/main/neurolaw.png)" align="middle" height="300px">
+	<br><i>Projectlogo</i>
 </p>
 
 ## structure（结构）
@@ -29,12 +29,12 @@ Code for [[开源项目] Neurolaw project](https://andlab-um.com/openprojects) p
         - ...
 - 📂 数据集
     - 📂 EEG 数据集
-        - 📄 Dataset1.csv
-        - 📄 Dataset2.csv
+        - 📄 Subject1.csv
+        - 📄 Subject2.csv
         - ...
     - 📂 MRI 数据集
-        - 📄 Dataset1.nii
-        - 📄 Dataset2.nii
+        - 📄 Subject1.nii
+        - 📄 Subject2.nii
         - ...
 - 📂 工具
     - 📂 分析工具
@@ -46,22 +46,19 @@ Code for [[开源项目] Neurolaw project](https://andlab-um.com/openprojects) p
 
 ## 如何贡献
 欢迎贡献与 Neurolaw 相关的内容。如果您想添加新的文献、数据集或工具，请按照以下步骤进行：
-### Fork 该仓库到您的 GitHub 账户。
+-1 Fork 该仓库到您的 GitHub 账户。
 
-### 在您的本地计算机上克隆（clone）您 Fork 后的仓库。
-bash
-Copy code
-git clone https://github.com/andlab-um/neuroLaw/.git
-### 添加您的内容到相应的文件夹中。
+-2在您的本地计算机上克隆（clone）您 Fork 后的仓库。
 
-### 提交您的更改并推送到您的 GitHub 仓库。
+-3 添加您的内容到相应的文件夹中。
 
-bash
-Copy code
+-4 提交您的更改并推送到您的 GitHub 仓库。
+
 git add .
 git commit -m "Add new paper"
 git push origin main
-### 在 GitHub 上创建一个 Pull Request（PR）以将您的更改合并到主仓库。
+
+-5 在 GitHub 上创建一个 Pull Request（PR）以将您的更改合并到主仓库。
 
 我们非常感谢您的贡献！
 
