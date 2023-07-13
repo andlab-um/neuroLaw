@@ -13,8 +13,7 @@ Code for [[开源项目] Neurolaw project](https://andlab-um.com/openprojects) p
 ## Description
 
 <p align="center">
-	<img src="[https://user-images.githubusercontent.com/19154386/206663251-5fb70be3-a126-4e94-ac0d-0b6962dcd6e4.png](https://github.com/andlab-um/neuroLaw/blob/main/neurolaw.png)" align="middle" height="300px">
-	<br><i>Projectlogo</i>
+	<img src="https://user-images.githubusercontent.com/19154386/206663251-5fb70be3-a126-4e94-ac0d-0b6962dcd6e4.png" align="middle" height="300px">
 </p>
 
 ## structure（结构）
