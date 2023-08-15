@@ -7,8 +7,7 @@
 
 > From [Affective, Neuroscience, and Decision-making Lab](https://andlab-um.com)
 
-Code for [[开源项目] Neurolaw project](https://andlab-um.com/openprojects) preprocessing and preliminary analysis, accompanying with the following paper:
-
+Code for [[开源项目] Neurolaw project](https://andlab-um.com/openproject) preprocessing and preliminary analysis, accompanying with the following paper:
 
 ## Description
 
