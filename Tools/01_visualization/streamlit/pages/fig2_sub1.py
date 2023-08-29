@@ -4,40 +4,51 @@ import json
 
 import streamlit as st
 # import altair as alt
-
 import numpy as np
 import pandas as pd
+
 from scipy import stats
 from itertools import combinations
 
 import seaborn as sns
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 from matplotlib import font_manager
 from statannotations.Annotator import Annotator
 
 from streamlit_fcns import *
 
-hatches = ['','','','','','']
+# for hash patterns in bars
+hatches=[' ', ' ', '//','//']
+# for hash patterns in legends
+legend_hatches = [' ', ' ']
 
-data_file = glob.glob(os.path.join(BEHAVIOR_ROOT, '1_1*'))[0]
+data_file = glob.glob(os.path.join(BEHAVIOR_ROOT, '2_1SPP*'))[0]
 df = pd.read_excel(data_file)
 # df = df.reset_index(drop=True)
-df = df.reset_index(drop=False)
-df = df.rename(columns={'index': 'trial'})
+# df1 = df1.reset_index(drop=False)
+# df1 = df1.rename(columns={'index': 'trial', 'MIS':'Mis'})
+# df1['group'] = 'SPP'
 
-df_long = df.melt(id_vars='trial', var_name='variable', value_name='value')
+# data_file = glob.glob(os.path.join(BEHAVIOR_ROOT, '2_2TPP*'))[0]
+# df2 = pd.read_excel(data_file)
+# df2['group'] = 'TPP'
 
-rewards = ['Immediate', 'Delayed']
-offense = ['Mis', 'Fel', 'Cap']
+# df = pd.concat([df1, df2], ignore_index=True)
+
+# st.write(df)
+# st.write(df1)
+# st.write(df2)
+
+df_long = df.melt(id_vars=['subject'], var_name='variable', 
+                  value_vars=['Immediate', 'Delayed'], value_name='value')
+
+# st.write(df_long)s
 
 
-df_long['rewards'] = [get_cond(rewards, v) for v in df_long['variable']]
-df_long['offense'] = [get_cond(offense, v) for v in df_long['variable']]
-# st.write(df_long)
-
-json_file = './json/fig1_sub1.json'
+json_file = './json/fig2_sub1+2.json'
 ## presets
-params = {"x_axis_label": 'Scenario',
+params = {"x_axis_label": 'Group',
          "y_axis_label": 'Degree of Punishment',
          "legend_title": 'Time',
          "font_family": 'Times New Roman',
@@ -56,8 +67,8 @@ params = {"x_axis_label": 'Scenario',
          'capsize': '0.08',
          'errwidth': '1.1',
          'errcolor': '#000000',
-         'ylim_lower': '0',
-         'ylim_upper': '9',
+         'ylim_lower': '2',
+         'ylim_upper': '8',
          'grid_line_interval': '1'
          }
 
@@ -68,11 +79,10 @@ if st.sidebar.button("Load from saved json file"):
     tmp = json.load(open(load_json))
     params.update(tmp)
     # use update for compatibility
-    # st.write(tmp)
-# st.write(params)
 
-x = 'offense'
-hue = 'rewards'
+
+x = 'variable'
+hue = 'variable'
 y = 'value'
 
 order = pd.unique(df_long[x])
@@ -114,15 +124,13 @@ with setup_cols[1]:
     # modified['ylim_lower'] = st.text_input('y axis lower limit', value=params['ylim_lower'])
     ylim = st.select_slider(
         'Range for y-axis', 
-        options=np.round((np.arange(0,np.ceil(np.max(df_long[y]))+1,0.5)),1), 
+        options=np.round((np.arange(0,np.ceil(np.max(df_long[y]))+2,0.5)),1), 
         value = (float(params['ylim_lower']), float(params['ylim_upper'])))
     # st.write(ylim)
     modified['ylim_lower'] = ylim[0]
     modified['ylim_upper'] = ylim[1]
     assert float(modified['fig_height']) >= 0, "Height should be above zero and able to be interpreted as float"
     assert float(modified['fig_width']) >= 0, "Width should be above zero and able to be interpreted as float"
-    # assert check_float(modified['ylim_lower']), "Lower limit should be able to be interpreted as float"
-
 
 with setup_cols[2]:
     st.write('## Color')
@@ -161,55 +169,93 @@ with setup_cols[3]:
     else:
         ci = None
 
+
 custom_palette = sns.color_palette([modified['color1'], modified['color2'], modified['color3']])
 
 # sns.set_style()
 sns.set_theme(font=modified['font_family'], style="whitegrid",
-        rc={"grid.color": str(modified['grid_color']), 
-            "grid.linestyle": modified['grid_line_style'],
-            "axes.edgecolor": str(modified['axis_color']),})
+            rc={"grid.color": str(modified['grid_color']), 
+                "grid.linestyle": modified['grid_line_style'],
+                "axes.edgecolor": str(modified['axis_color']),},
+            )
 
 
-plot = sns.catplot(kind="bar", x=x, hue=hue, y=y, 
+
+plot = sns.catplot(kind="violin", x=x, y=y, dodge=True, #split=True,
                    order=order, hue_order=hue_order,
                    data=df_long, palette=custom_palette, 
                    height=float(modified['fig_height']),
                    aspect=float(modified['fig_width'])/float(modified['fig_height']),
                    legend=True, legend_out=True, edgecolor=modified['edge_color'],
-                   ci=ci, capsize=modified['capsize'], 
-                   errcolor=modified['errcolor'], errwidth=modified['errwidth'],
-                   dodge=True)
+                   ci=ci, capsize=modified['capsize'], inner=None,
+                   errcolor=modified['errcolor'], errwidth=modified['errwidth'])
+# sns.swarmplot(data=df_long, x=x, y=y, hue=hue, size=3, ax=plot.ax)
+# plot.ax.set_ylim()
+c = 'k'
+box = sns.boxplot(data=df_long, x=x, y=y, color='white',
+            order=order, hue_order=hue_order, 
+            width=0.25, 
+            boxprops=dict(zorder=2),
+            # capprops=dict(color=c),
+            # whiskerprops=dict(color=c),
+            # # flierprops=dict(color=c, markeredgecolor=c),
+            # medianprops=dict(color=c),
+            ax=plot.ax,
+            linewidth=1, showfliers = False)
+
+# box.get_legend().remove()
+
+# https://stackoverflow.com/questions/72656861/how-to-add-hatches-to-boxplots-with-sns-boxplot-or-sns-catplot
+# add patterns in violin lpot
 
 if bool_hatch:
-    bars = plot.axes[0][0].patches
-    for pat,bar in zip(hatches,bars):
-        bar.set_hatch(pat)
+    ihatch = iter(hatches)
+    _ = [i.set_hatch(next(ihatch)) for i in plot.ax.get_children() if isinstance(i, mpl.collections.PolyCollection)]
+    # bars = plot.ax.patches
+    # for pat,bar in zip(hatches,bars):
+    #     bar.set_hatch(pat)
 
 yticks = np.round(np.arange(
     ylim[0], ylim[1]+modified['grid_line_interval']/2, modified['grid_line_interval']),2)
 plot.set(ylim=ylim, yticks=yticks)
+
+for edg in plot.ax.collections:
+    edg.set_edgecolor(modified['edge_color'])
+    edg.set_linewidth(1)
+
+
 
 plot.set_axis_labels(x_var=modified['x_axis_label'], y_var=modified['y_axis_label'])
 plot.set_xticklabels(size=modified['tick_font_size'])
 plot.set_yticklabels(yticks, size=modified['tick_font_size'])
 plot.set_xlabels(size=modified['axis_font_size'])
 plot.set_ylabels(size=modified['axis_font_size'])
+# axes = plot.axes
+# axes[0,0].set_ylim((float(modified['ylim_lower']), None))
 
-# plot.ax.gca().bar_width = 0.5
 
 if annot:
+    st.write("NOTE: Had to use t-test_ind as n(TPP)!=n(SPP)")
     pairs = [[(o, ho) for ho in hue_order] for o in order]
     # st.write(pairs)
-    annotator = Annotator(ax=plot.ax, data=df_long, pairs=pairs,
+    annotator = Annotator(ax=box, data=df_long, pairs=pairs,
                         x=x, hue=hue, y=y, 
                         order=order, hue_order=hue_order)
-    annotator.configure(test="t-test_paired", text_format="star", loc="inside")
-    annotator.apply_and_annotate()
+    annotator.configure(test="t-test_ind", text_format="star", loc="inside")
+    annotator.apply_test().annotate(line_offset_to_group=0.15, line_offset=0.1)
 
-legend = plot.legend
-legend.set_title(modified['legend_title'])
-# legend.set_fontsize(legend_font_size)
-# plt.setp(legend.get_texts(), fontsize=legend_font_size) 
+# legend = plot.legend
+# legend.set_title(modified['legend_title'])
+# # add patterns to legend
+
+# for lp, hatch in zip(legend.get_patches(), legend_hatches):
+#     # st.write(hatch)
+#     if bool_hatch:
+#         lp.set_hatch(hatch)
+#     lp.set_edgecolor(modified['edge_color'])
+#         # lp.set_facecolor('none')
+# # legend.set_fontsize(legend_font_size)
+# # plt.setp(legend.get_texts(), fontsize=legend_font_size) 
 st.pyplot(fig=plot)
 
 for key in modified:

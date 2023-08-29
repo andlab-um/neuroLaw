@@ -62,8 +62,8 @@ params = {"x_axis_label": 'Group',
          "grid_line_style": '-',
          "fig_height": '4',
          "fig_width": '4',
-         'color1': '#e28743',
-         'color2': '#1e81b0',
+         'color1': '#8fcde6',
+         'color2': '#b69fc4',
          'color3': '#38b01e',
          'edge_color': '#ffffff',
          'ci': '95',
@@ -150,7 +150,7 @@ with setup_cols[2]:
     modified['grid_color'] = st.select_slider('Grid line color (-> white)', 
                                   options=np.round((np.arange(0,1.1,0.1)),1),
                                   value=float(params['grid_color']))
-    bool_hatch = st.checkbox("Plot hatches?", value=False)
+    bool_hatch = st.checkbox("Plot hatches?", value=True)
 
 with setup_cols[3]:
     st.write("## Significance")

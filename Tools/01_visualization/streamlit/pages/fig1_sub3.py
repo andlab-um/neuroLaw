@@ -141,7 +141,7 @@ with setup_cols[2]:
     modified['grid_color'] = st.select_slider('Grid line color (-> white)', 
                                   options=np.round((np.arange(0,1.1,0.1)),1),
                                   value=float(params['grid_color']))
-    bool_hatch = st.checkbox("Plot hatches?", value=False)
+    bool_hatch = st.checkbox("Plot hatches?", value=True)
 
 with setup_cols[3]:
     st.write("## Significance")
