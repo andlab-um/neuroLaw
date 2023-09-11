@@ -1,0 +1,21 @@
+{
+    "x_axis_label": "Scenario",
+    "y_axis_label": "Degree of Punishment",
+    "legend_title": "Time",
+    "font_family": "Times New Roman",
+    "tick_font_size": "12",
+    "axis_font_size": "15",
+    "axis_color": "0.9",
+    "grid_color": "0.9",
+    "grid_line_style": "-",
+    "fig_height": "4",
+    "fig_width": "6",
+    "color1": "#e28743",
+    "color2": "#1e81b0",
+    "color3": "#38b01e",
+    "edge_color": "#ffffff",
+    "ci": "95",
+    "capsize": "0.08",
+    "errwidth": "1.1",
+    "errcolor": "#000000"
+}

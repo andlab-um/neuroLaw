@@ -1,0 +1,4 @@
+### ignore data files if they get too large
+# *.png
+# *.mat
+# *.nii

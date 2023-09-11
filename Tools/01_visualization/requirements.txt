@@ -1,0 +1,9 @@
+scipy
+numpy
+pandas
+matplotlib
+seaborn
+
+colorutils
+statannotations
+streamlit
