@@ -22,7 +22,7 @@ Recent advances in large language models raise the question of whether LLMs can 
 
 ## Repository Structure
 
-project
+```project
 │   README.md
 │
 ├── data
@@ -109,6 +109,9 @@ project
     │   prompt_utils.py
     │   llm_api_wrapper.py
     │   stats_utils.py
+
+```
+
 ---
 
 ## Data
