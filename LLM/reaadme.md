@@ -22,13 +22,13 @@ Recent advances in large language models raise the question of whether LLMs can 
 
 ## Repository Structure
 
-data/           # Human and LLM data (behavioral, fMRI, model outputs)
-prompts/        # Prompt templates and experimental manipulations
-experiments/    # Scripts for running LLM and human-aligned experiments
-analysis/       # Behavioral, textual, and representational analyses
-visualization/  # Scripts for reproducing figures
-results/        # Generated figures, tables, and logs
-utils/          # Shared utility functions
+data/           # Human and LLM data (behavioral data, fMRI data, model outputs)
+prompts/        # Prompt templates and controlled experimental manipulations
+experiments/    # Scripts for running LLM experiments and human-aligned pipelines
+analysis/       # Behavioral, textual (CoT), and representational analyses
+visualization/  # Scripts for reproducing figures and plots used in the paper
+results/        # Generated figures, tables, intermediate results, and logs
+utils/          # Shared utility functions (data loading, prompt handling, statistics)
 
 ---
 
