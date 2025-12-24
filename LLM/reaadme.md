@@ -22,14 +22,93 @@ Recent advances in large language models raise the question of whether LLMs can 
 
 ## Repository Structure
 
-data/           # Human and LLM data (behavioral data, fMRI data, model outputs)
-prompts/        # Prompt templates and controlled experimental manipulations
-experiments/    # Scripts for running LLM experiments and human-aligned pipelines
-analysis/       # Behavioral, textual (CoT), and representational analyses
-visualization/  # Scripts for reproducing figures and plots used in the paper
-results/        # Generated figures, tables, intermediate results, and logs
-utils/          # Shared utility functions (data loading, prompt handling, statistics)
-
+project
+│   README.md
+│
+├── data
+│   │   README.md
+│   │
+│   ├── cases
+│   │   │   raw_cases.json
+│   │   │   anonymized_cases.json
+│   │   │   case_metadata.csv
+│   │
+│   ├── human
+│   │   │   behavioral_data.csv
+│   │   │
+│   │   └── fMRI
+│   │       ├── preprocessed
+│   │       │   ...
+│   │       └── roi_timeseries
+│   │           ...
+│   │
+│   └── llm
+│       ├── raw_outputs
+│       │   ...
+│       ├── parsed_outputs
+│       │   ...
+│       └── hidden_states
+│           ...
+│
+├── prompts
+│   │   base_prompt.txt
+│   │
+│   ├── role_variants
+│   │   │   judge_prompt.txt
+│   │   │   victim_prompt.txt
+│   │
+│   ├── emotion_variants
+│   │   │   with_emotion.txt
+│   │   │   without_emotion.txt
+│   │
+│   ├── time_pressure_variants
+│   │   │   short_time.txt
+│   │   │   long_time.txt
+│   │   │   no_limit.txt
+│   │
+│   └── full_prompt_templates
+│       │   full_prompt_template.txt
+│
+├── experiments
+│   │   run_llm_experiments.py
+│   │   run_human_aligned_analysis.py
+│   │   config.yaml
+│
+├── analysis
+│   ├── behavioral
+│   │   │   punishment_analysis.py
+│   │   │   emotion_analysis.py
+│   │   │   coupling_analysis.py
+│   │
+│   ├── text
+│   │   │   cot_length_analysis.py
+│   │   │   sentiment_lexicon_analysis.py
+│   │   │   word_frequency.py
+│   │
+│   └── representation
+│       │   extract_hidden_states.py
+│       │   rsa_llm.py
+│       │   rsa_brain_llm.py
+│
+├── visualization
+│   │   plot_behavioral_results.py
+│   │   plot_context_effects.py
+│   │   plot_rsa_matrices.py
+│   │   plot_figures_for_paper.py
+│
+├── results
+│   ├── figures
+│   │   ...
+│   ├── tables
+│   │   ...
+│   └── logs
+│       ...
+│
+└── utils
+    │   data_utils.py
+    │   prompt_utils.py
+    │   llm_api_wrapper.py
+    │   stats_utils.py
 ---
 
 ## Data
@@ -81,6 +160,24 @@ or using Conda:
 conda env create -f environment.yml
 ```
 
+---
 
+## Key Analyses
+- Behavioral alignment and divergence between humans and LLMs
+- Emotion–punishment coupling under role and delay conditions
+- Prompt sensitivity and contextual modulation in LLMs
+- Chain-of-thought textual and semantic analyses
+- Hidden-state representational similarity analysis (RSA)
+- Cross-modal comparison between LLM representations and human fMRI data
 
+---
+
+## Citation
+
+If you use this code or data in your research, please cite the following paper:
+
+```text
+Kang, J., Zhang, S., Huang, J., Qi, Y., Wei, X., & Wu, H.
+Psychological Bases of Justice: How Emotions Shape Human and AI Judicial Decisions.
+```
 
