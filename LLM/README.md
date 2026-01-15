@@ -21,96 +21,43 @@ Recent advances in large language models raise the question of whether LLMs can 
 ---
 
 ## Repository Structure
+└── github
+    ├── data
+    │   └── final_crime_data.csv
+    ├── experiment
+    │   ├── LLM-hidden-state
+    │   │   ├── batch_csv_to_prompts.py
+    │   │   └── run (1).py
+    │   └── LLM_scripts
+    │       ├── exp001_age20_NAN-reasoning_with_emotion_DeepSeek.py
+    │       ├── exp002_age20_NAN-reasoning_with_emotion_Kimi.py
+    │       ├── exp003_age20_NAN-reasoning_with_emotion_Qwen.py
+    │       ├── exp004_age20_NAN-reasoning_without_emotion_DeepSeek.py
+    │       ├── exp005_age20_NAN-reasoning_without_emotion_Kimi.py
+    │       ├── exp006_age20_NAN-reasoning_without_emotion_Qwen.py
+    │       ├── exp007_age20_long-term-reasoning_with_emotion_DeepSeek.py
+    │       ├── exp008_age20_long-term-reasoning_with_emotion_Kimi.py
+    │       ├...
+    │       └── experiment_runner.py
+    ├── prompt
+    │   └── prompt.py
+    └── visualization
+        ├── behavior-llm
+        │   ├── behavioral_data_analysis_human.ipynb
+        │   ├── behavioral_data_analysis_llm.ipynb
+        │   ├── llm_embedding_res_brain.ipynb
+        │   └── llm_embedding_rsa.ipynb
+        ├── brain
+        │   ├── fmri_replicate.ipynb
+        │   └── fmri_replicate2.ipynb
+        └── text
+            ├── calculate_sentiment_density.py
+            ├── calculate_sentiment_scores.py
+            ├── text_length_by_time_pressure.png
+            ├── time_pressure_merged_severity.png
+            ├── visualize_text_length_by_time_pressure.py
+            └── visualize_time_pressure_by_severity_new.py
 
-```project
-│   README.md
-│
-├── data
-│   │   README.md
-│   │
-│   ├── cases
-│   │   │   raw_cases.json
-│   │   │   anonymized_cases.json
-│   │   │   case_metadata.csv
-│   │
-│   ├── human
-│   │   │   behavioral_data.csv
-│   │   │
-│   │   └── fMRI
-│   │       ├── preprocessed
-│   │       │   ...
-│   │       └── roi_timeseries
-│   │           ...
-│   │
-│   └── llm
-│       ├── raw_outputs
-│       │   ...
-│       ├── parsed_outputs
-│       │   ...
-│       └── hidden_states
-│           ...
-│
-├── prompts
-│   │   base_prompt.txt
-│   │
-│   ├── role_variants
-│   │   │   judge_prompt.txt
-│   │   │   victim_prompt.txt
-│   │
-│   ├── emotion_variants
-│   │   │   with_emotion.txt
-│   │   │   without_emotion.txt
-│   │
-│   ├── time_pressure_variants
-│   │   │   short_time.txt
-│   │   │   long_time.txt
-│   │   │   no_limit.txt
-│   │
-│   └── full_prompt_templates
-│       │   full_prompt_template.txt
-│
-├── experiments
-│   │   run_llm_experiments.py
-│   │   run_human_aligned_analysis.py
-│   │   config.yaml
-│
-├── analysis
-│   ├── behavioral
-│   │   │   punishment_analysis.py
-│   │   │   emotion_analysis.py
-│   │   │   coupling_analysis.py
-│   │
-│   ├── text
-│   │   │   cot_length_analysis.py
-│   │   │   sentiment_lexicon_analysis.py
-│   │   │   word_frequency.py
-│   │
-│   └── representation
-│       │   extract_hidden_states.py
-│       │   rsa_llm.py
-│       │   rsa_brain_llm.py
-│
-├── visualization
-│   │   plot_behavioral_results.py
-│   │   plot_context_effects.py
-│   │   plot_rsa_matrices.py
-│   │   plot_figures_for_paper.py
-│
-├── results
-│   ├── figures
-│   │   ...
-│   ├── tables
-│   │   ...
-│   └── logs
-│       ...
-│
-└── utils
-    │   data_utils.py
-    │   prompt_utils.py
-    │   llm_api_wrapper.py
-    │   stats_utils.py
-
-```
 
 ---
 
