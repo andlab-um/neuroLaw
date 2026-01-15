@@ -20,7 +20,7 @@ Recent advances in large language models raise the question of whether LLMs can 
 
 ---
 
-## Repository Structure
+```project
 └── github
     ├── data
     │   └── final_crime_data.csv
@@ -57,7 +57,7 @@ Recent advances in large language models raise the question of whether LLMs can 
             ├── time_pressure_merged_severity.png
             ├── visualize_text_length_by_time_pressure.py
             └── visualize_time_pressure_by_severity_new.py
-
+```
 
 ---
 
